@@ -12,12 +12,19 @@ const App = (props) => {
 		setVotes(copy)
 	}
 
+	const mostVotedIndex = votes.indexOf(Math.max(...votes))
+
 	return (
 		<div>
+			<h1>Anecdote of the day</h1>
 			<p>{props.anecdotes[selected]}</p>
-			<p>has been voted {votes[selected]} times.</p>
+			<p>has {votes[selected]} votes.</p>
 			<button onClick={() => voteAnecdote()}>Vote</button>
 			<button onClick={() => setSelected(random())}>Next anecdote</button>
+			
+			<h1>Anecdote with most votes</h1>
+			<p>{props.anecdotes[mostVotedIndex]}</p>
+			<p>has {votes[mostVotedIndex]} votes.</p>
 		</div>
 	)
 }
