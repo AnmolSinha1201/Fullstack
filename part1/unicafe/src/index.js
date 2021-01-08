@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom'
 
 const Statistics = ({good, neutral, bad}) => {
 	const total = good + neutral + bad
-
-	return (
+	if (total === 0)
+		return (
+			<div>No feedback given</div>
+		)
+	else return (
 		<>
 			<table>
 				<tr>
@@ -25,11 +28,11 @@ const Statistics = ({good, neutral, bad}) => {
 				</tr>
 				<tr>
 					<td>Average</td>
-					<td>{(good - bad) / (total === 0 ? 1 : total)}</td>
+					<td>{(good - bad) / total}</td>
 				</tr>
 				<tr>
 					<td>Positive</td>
-					<td>{(good / (total === 0 ? 1 : total)) * 100}%</td>
+					<td>{(good / total) * 100}%</td>
 				</tr>
 			</table>
 		</>
