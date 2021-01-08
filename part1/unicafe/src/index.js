@@ -6,6 +6,7 @@ const App = () => {
 	const [good, setGood] = useState(0)
 	const [neutral, setNeutral] = useState(0)
 	const [bad, setBad] = useState(0)
+	const total = good + neutral + bad
 
 	return (
 		<div>
@@ -26,6 +27,18 @@ const App = () => {
 				<tr>
 					<td>Bad</td>
 					<td>{bad}</td>
+				</tr>
+				<tr>
+					<td>All</td>
+					<td>{total}</td>
+				</tr>
+				<tr>
+					<td>Average</td>
+					<td>{(good - bad) / (total === 0 ? 1 : total)}</td>
+				</tr>
+				<tr>
+					<td>Positive</td>
+					<td>{(good / (total === 0 ? 1 : total)) * 100}%</td>
 				</tr>
 			</table>
 		</div>
